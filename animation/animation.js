@@ -8,11 +8,11 @@ const ctx = canvas.getContext('2d');
 const titre = document.getElementById('page_title');
 
 const images_paths = {
-    fighter: 'ressources/fighter.png',
-    samurai: 'ressources/samurai.png',
-    shinobi: 'ressources/shinobi.png',
-    background: 'ressources/background.png',
-    background_2: 'ressources/background.png'
+    fighter: 'ressources/fighter.png?timestamp=${new Date().getTime()}',
+    samurai: 'ressources/samurai.png?timestamp=${new Date().getTime()}',
+    shinobi: 'ressources/shinobi.png?timestamp=${new Date().getTime()}',
+    background: 'ressources/background.png?timestamp=${new Date().getTime()}',
+    background_2: 'ressources/background.png?timestamp=${new Date().getTime()}'
 };
 
 let loadedImages = 0;

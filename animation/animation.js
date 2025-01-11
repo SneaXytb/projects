@@ -8,11 +8,11 @@ const ctx = canvas.getContext('2d');
 const titre = document.getElementById('page_title');
 
 const images_paths = {
-    fighter: 'ressources/fighter.png?timestamp=${new Date().getTime()}',
-    samurai: 'ressources/samurai.png?timestamp=${new Date().getTime()}',
-    shinobi: 'ressources/shinobi.png?timestamp=${new Date().getTime()}',
-    background: 'ressources/background.png?timestamp=${new Date().getTime()}',
-    background_2: 'ressources/background.png?timestamp=${new Date().getTime()}'
+    fighter: 'ressources/fighter.png',
+    samurai: 'ressources/samurai.png',
+    shinobi: 'ressources/shinobi.png',
+    background: 'ressources/background.png',
+    background_2: 'ressources/background.png'
 };
 
 let loadedImages = 0;
@@ -385,7 +385,7 @@ function update_affichage() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     // Affichage du background
     ctx.drawImage(background, pos_x.background, 0, canvas.width, canvas.height);
-    ctx.drawImage(background_2, pos_x.background_2, 0, canvas.width, canvas.height);
+    // ctx.drawImage(background_2, pos_x.background_2, 0, canvas.width, canvas.height);
     // Gestion du miroir
     if (miroir.fighter) {
         ctx.save();

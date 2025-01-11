@@ -15,49 +15,80 @@ const images_paths = {
     background_2: 'ressources/background.png'
 };
 
-let loadedImages = 0;
-const totalImages = Object.keys(images_paths).length;
+const images = {}; // Pour stocker les images chargées
 
-const fighter = new Image();
-fighter.src = images_paths.fighter;
-fighter.onload = () => {
-    loadedImages++;
-    if (loadedImages === totalImages) {
-        main(); // Commencez l'animation quand tout est chargé
+async function loadImage(url) {
+    const response = await fetch(url);
+    if (!response.ok) {
+        throw new Error(`Erreur lors du chargement de ${url}: ${response.statusText}`);
     }
-};
-const samurai = new Image();
-samurai.src = images_paths.samurai;
-samurai.onload = () => {
-    loadedImages++;
-    if (loadedImages === totalImages) {
-        main(); // Commencez l'animation quand tout est chargé
-    }
-};
-const shinobi = new Image();
-shinobi.src = images_paths.shinobi;
-shinobi.onload = () => {
-    loadedImages++;
-    if (loadedImages === totalImages) {
-        main(); // Commencez l'animation quand tout est chargé
-    }
-};
-const background = new Image();
-background.src = images_paths.background;
-background.onload = () => {
-    loadedImages++;
-    if (loadedImages === totalImages) {
-        main(); // Commencez l'animation quand tout est chargé
-    }
-};
-const background_2 = new Image();
-background_2.src = images_paths.background_2;
-background_2.onload = () => {
-    loadedImages++;
-    if (loadedImages === totalImages) {
-        main(); // Commencez l'animation quand tout est chargé
-    }
-};
+    const blob = await response.blob();
+    return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.src = URL.createObjectURL(blob);
+        img.onload = () => resolve(img);
+        img.onerror = reject;
+    });
+}
+
+async function preloadImages() {
+    const promises = Object.entries(images_paths).map(async ([key, url]) => {
+        images[key] = await loadImage(url); // Charger et stocker chaque image
+    });
+
+    await Promise.all(promises); // Attendre que toutes les images soient chargées
+    console.log('Toutes les images sont chargées :', images);
+
+    main(); // Lancer l'animation ou le jeu après le chargement
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    preloadImages().catch(err => console.error('Erreur lors du chargement des images:', err));
+});
+
+// let loadedImages = 0;
+// const totalImages = Object.keys(images_paths).length;
+
+// const fighter = new Image();
+// fighter.src = images_paths.fighter;
+// fighter.onload = () => {
+//     loadedImages++;
+//     if (loadedImages === totalImages) {
+//         main(); // Commencez l'animation quand tout est chargé
+//     }
+// };
+// const samurai = new Image();
+// samurai.src = images_paths.samurai;
+// samurai.onload = () => {
+//     loadedImages++;
+//     if (loadedImages === totalImages) {
+//         main(); // Commencez l'animation quand tout est chargé
+//     }
+// };
+// const shinobi = new Image();
+// shinobi.src = images_paths.shinobi;
+// shinobi.onload = () => {
+//     loadedImages++;
+//     if (loadedImages === totalImages) {
+//         main(); // Commencez l'animation quand tout est chargé
+//     }
+// };
+// const background = new Image();
+// background.src = images_paths.background;
+// background.onload = () => {
+//     loadedImages++;
+//     if (loadedImages === totalImages) {
+//         main(); // Commencez l'animation quand tout est chargé
+//     }
+// };
+// const background_2 = new Image();
+// background_2.src = images_paths.background_2;
+// background_2.onload = () => {
+//     loadedImages++;
+//     if (loadedImages === totalImages) {
+//         main(); // Commencez l'animation quand tout est chargé
+//     }
+// };
 
 const limites = {
     fighter: [6, 8, 8, 10, 4, 3, 4, 2, 3, 3],
@@ -95,7 +126,7 @@ const miroir = {
     fighter: false,
     samurai: false,
     shinobi: false
-}
+};
 
 const vie = {
     fighter: 100,
@@ -144,7 +175,7 @@ function action(commande) {
         default:
             return -1;
     }
-};
+}
 
 // function animation_solo() {
 //         var interval = setInterval(() => {
@@ -159,23 +190,23 @@ function action(commande) {
 
 function reset_pas(perso) {
     pas_en_cours[perso] = 0;
-};
+}
 
 function set_action(perso, action) {
     if (action_en_cours[perso] != action) {
         action_en_cours[perso] = action;
         reset_pas(perso);
     }
-};
+}
 
 function set_position(perso, x, y) {
     pos_x[perso] = x;
     pos_y[perso] = y;
-};
+}
 
 function peut_avancer(perso) {
     return pos_x[perso] >= -10 && pos_x[perso] <= canvas.width - taille_afficher;
-};
+}
 
 function avancer(perso, x, y, action) {
     set_action(perso, action);
@@ -188,55 +219,55 @@ function avancer(perso, x, y, action) {
         }
         pos_y[perso] += y;
     }
-};
+}
 
 function immobile(perso) {
     set_action(perso, 'immobile');
-};
+}
 
 function marche(perso) {
     set_action(perso, 'marche');
-};
+}
 
 function course(perso) {
     set_action(perso, 'course');
-};
+}
 
 function saut(perso) {
     set_action(perso, 'saut');
-};
+}
 
 function attaque_crochet(perso) {
     set_action(perso, 'attaque_crochet');
-};
+}
 
 function attaque_direct(perso) {
     set_action(perso, 'attaque_direct');
-};
+}
 
 function attaque_fouetter(perso) {
     set_action(perso, 'attaque_fouetter');
-};
+}
 
 function position_combat(perso) {
     set_action(perso, 'position_combat');
-};
+}
 
 function parade(perso) {
     set_action(perso, 'parade');
-};
+}
 
 function mort(perso) {
     set_action(perso, 'mort');
-};
+}
 
 function cacher(perso) {
     set_action(perso, 'rien');
-};
+}
 
 function take_domage(perso) {
     vie[perso] -= 3;
-};
+}
 
 function verif_domage_1_sur_2(perso1, perso2) {
     var temp_action = action(action_en_cours[perso1]);
@@ -246,23 +277,23 @@ function verif_domage_1_sur_2(perso1, perso2) {
             take_domage(perso2);
         }
     }
-};
+}
 
 function abs(x) {
     if (x < 0) {
         return -x;
     }
     return x;
-};
+}
 
 function en_vie(perso) {
     return vie[perso] > 0;
-};
+}
 
 function update_vie() {
     barre_vie_j1.style.setProperty("--progress-ratio-j1", vie[j1] + "%");
     barre_vie_j2.style.setProperty("--progress-ratio-j2", vie[j2] + "%");
-};
+}
 
 function update_death() {
     if (vie.fighter <= 0) {
@@ -274,7 +305,7 @@ function update_death() {
     if (vie.shinobi <= 0) {
         mort('shinobi');
     }
-};
+}
 
 function update_death_joueurs() {
     if (vie[j1] <= 0) {
@@ -287,7 +318,7 @@ function update_death_joueurs() {
         titre.innerText = 'Le joueur 1 a gagné';
         rematch.style.display = 'block';
     }
-};
+}
 
 function collision_joueurs() {
     if (en_vie(j1) && en_vie(j2)) {
@@ -309,7 +340,7 @@ function collision_joueurs() {
 
     update_death_joueurs();
     update_vie();
-};
+}
 
 function collision() {
     if (en_vie('fighter') && en_vie('samurai') && abs(pos_x.fighter - pos_x.samurai) <= epsilon) {
@@ -327,15 +358,15 @@ function collision() {
 
     update_death();
     update_vie();
-};
+}
 
 function peut_aller_a_gauche(perso) {
     return pos_x[perso] > -70;
-};
+}
 
 function peut_aller_a_droite(perso) {
     return pos_x[perso] < canvas.width - 180;
-};
+}
 
 // A revoir car ne redescent pas
 function jump(perso) {
@@ -351,7 +382,7 @@ function jump(perso) {
                 jump(perso); }, time);
         }
     }
-};
+}
 
 function update_background() {
     pos_x.background -= vitesse_deplacement_backgroud;
@@ -362,11 +393,11 @@ function update_background() {
     if (pos_x.background_2 <= -canvas.width) {
         pos_x.background_2 = canvas.width;
     }
-};
+}
 
 function update_position_miroir(perso) {
     pos_x[perso] = canvas.width - pos_x[perso] - taille_afficher;
-};
+}
 
 function update_miroir(perso) {
     if (miroir[perso]) {
@@ -376,7 +407,7 @@ function update_miroir(perso) {
         miroir[perso] = true;
         update_position_miroir(perso);
     }
-};
+}
 
 function update_affichage() {
     // Pour faire défiler le background en continu
@@ -444,7 +475,7 @@ function update_affichage() {
     if (miroir.shinobi) {
         ctx.restore();
     }
-};
+}
 
 function get_input() {
     window.addEventListener('keypress', (event) => {
@@ -572,7 +603,7 @@ function get_input() {
                 break;
         }
     });
-};
+}
 
 const rematch = document.getElementById('restart');
 
@@ -586,7 +617,7 @@ function init_game() {
     set_action(j1, 'position_combat');
     set_action(j2, 'position_combat');
     update_miroir(j2);
-};
+}
 
 function main() {
     document.getElementById('loading-screen').style.display = 'none';
@@ -597,4 +628,4 @@ function main() {
         window.requestAnimationFrame(update_affichage);
         collision_joueurs();
     }, time);
-};
+}

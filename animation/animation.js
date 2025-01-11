@@ -130,7 +130,8 @@ const vie = {
     shinobi: 100
 };
 
-let ligne = fighter.height / 10; // 10 lignes de 128px de hauteurs
+// let ligne = images.fighter.height / 10; // 10 lignes de 128px de hauteurs
+let ligne = 128;
 let taille_bloc = 128; // blocs de 128x128 // 12 blocs de 128px de largeur
 let taille_afficher = 250; // blocs de 250x250
 const  time = 100;

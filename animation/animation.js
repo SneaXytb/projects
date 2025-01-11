@@ -11,19 +11,53 @@ const images_paths = {
     fighter: 'ressources/fighter.png',
     samurai: 'ressources/samurai.png',
     shinobi: 'ressources/shinobi.png',
-    background: 'ressources/background.png'
+    background: 'ressources/background.png',
+    background_2: 'ressources/background.png'
 };
+
+let loadedImages = 0;
+const totalImages = Object.keys(images_paths).length;
 
 const fighter = new Image();
 fighter.src = images_paths.fighter;
+fighter.onload = () => {
+    loadedImages++;
+    if (loadedImages === totalImages) {
+      main(); // Commencez l'animation quand tout est chargé
+    }
+};
 const samurai = new Image();
 samurai.src = images_paths.samurai;
+samurai.onload = () => {
+    loadedImages++;
+    if (loadedImages === totalImages) {
+      main(); // Commencez l'animation quand tout est chargé
+    }
+};
 const shinobi = new Image();
 shinobi.src = images_paths.shinobi;
+shinobi.onload = () => {
+    loadedImages++;
+    if (loadedImages === totalImages) {
+      main(); // Commencez l'animation quand tout est chargé
+    }
+};
 const background = new Image();
 background.src = images_paths.background;
+background.onload = () => {
+    loadedImages++;
+    if (loadedImages === totalImages) {
+      main(); // Commencez l'animation quand tout est chargé
+    }
+};
 const background_2 = new Image();
-background_2.src = images_paths.background;
+background_2.src = images_paths.background_2;
+background_2.onload = () => {
+    loadedImages++;
+    if (loadedImages === totalImages) {
+      main(); // Commencez l'animation quand tout est chargé
+    }
+};
 
 const limites = {
     fighter: [6, 8, 8, 10, 4, 3, 4, 2, 3, 3],
@@ -555,6 +589,8 @@ function init_game() {
 };
 
 function main() {
+    document.getElementById('loading-screen').style.display = 'none';
+    document.getElementById('canvas').style.display = 'block';
     var interval = setInterval(() => {
         window.requestAnimationFrame(update_affichage);
         collision_joueurs();

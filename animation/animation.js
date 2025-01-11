@@ -591,6 +591,7 @@ function init_game() {
 function main() {
     document.getElementById('loading-screen').style.display = 'none';
     document.getElementById('canvas').style.display = 'block';
+    window.location.reload();
     get_input();
     init_game();
     var interval = setInterval(() => {

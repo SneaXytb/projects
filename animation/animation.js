@@ -598,7 +598,3 @@ function main() {
         collision_joueurs();
     }, time);
 };
-
-setTimeout(() => {
-    window.location.reload();
-}, 1000); // 1 seconde

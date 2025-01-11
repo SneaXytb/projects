@@ -591,10 +591,10 @@ function init_game() {
 function main() {
     document.getElementById('loading-screen').style.display = 'none';
     document.getElementById('canvas').style.display = 'block';
+    get_input();
+    init_game();
     var interval = setInterval(() => {
         window.requestAnimationFrame(update_affichage);
         collision_joueurs();
     }, time);
-    get_input();
-    init_game();
 };

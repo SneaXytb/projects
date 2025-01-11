@@ -608,6 +608,7 @@ var interval;
 
 rematch.addEventListener('click', (event) => {
     // window.location.reload();
+    rematch.style.display = 'none';
     clearInterval(interval);
     main();
 });

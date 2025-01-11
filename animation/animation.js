@@ -415,8 +415,8 @@ function update_affichage() {
     // Début de l'actualisation de tout (position et animation)
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     // Affichage du background
-    ctx.drawImage(background, pos_x.background, 0, canvas.width, canvas.height);
-    // ctx.drawImage(background_2, pos_x.background_2, 0, canvas.width, canvas.height);
+    ctx.drawImage(images.background, pos_x.background, 0, canvas.width, canvas.height);
+    // ctx.drawImage(images.background_2, pos_x.background_2, 0, canvas.width, canvas.height);
     // Gestion du miroir
     if (miroir.fighter) {
         ctx.save();
@@ -432,7 +432,7 @@ function update_affichage() {
             pas_en_cours.fighter++;
         }
         // Affichage update du fighter
-        ctx.drawImage(fighter, pas_en_cours.fighter * taille_bloc, ligne * action(action_en_cours.fighter), taille_bloc, taille_bloc, pos_x.fighter, pos_y.fighter, taille_afficher, taille_afficher);
+        ctx.drawImage(images.fighter, pas_en_cours.fighter * taille_bloc, ligne * action(action_en_cours.fighter), taille_bloc, taille_bloc, pos_x.fighter, pos_y.fighter, taille_afficher, taille_afficher);
     }
     if (miroir.fighter) {
         ctx.restore();
@@ -451,7 +451,7 @@ function update_affichage() {
             pas_en_cours.samurai++;
         }
         // Affichage update du samurai
-        ctx.drawImage(samurai, pas_en_cours.samurai * taille_bloc, ligne * action(action_en_cours.samurai), taille_bloc, taille_bloc, pos_x.samurai, pos_y.samurai, taille_afficher, taille_afficher);
+        ctx.drawImage(images.samurai, pas_en_cours.samurai * taille_bloc, ligne * action(action_en_cours.samurai), taille_bloc, taille_bloc, pos_x.samurai, pos_y.samurai, taille_afficher, taille_afficher);
     }
     if (miroir.samurai) {
         ctx.restore();
@@ -470,7 +470,7 @@ function update_affichage() {
             pas_en_cours.shinobi++;
         }
         // Affichage update du shinobi
-        ctx.drawImage(shinobi, pas_en_cours.shinobi * taille_bloc, ligne * action(action_en_cours.shinobi), taille_bloc, taille_bloc, pos_x.shinobi, pos_y.shinobi, taille_afficher, taille_afficher);
+        ctx.drawImage(images.shinobi, pas_en_cours.shinobi * taille_bloc, ligne * action(action_en_cours.shinobi), taille_bloc, taille_bloc, pos_x.shinobi, pos_y.shinobi, taille_afficher, taille_afficher);
     }
     if (miroir.shinobi) {
         ctx.restore();

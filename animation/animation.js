@@ -42,10 +42,6 @@ async function preloadImages() {
     main(); // Lancer l'animation ou le jeu après le chargement
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    preloadImages().catch(err => console.error('Erreur lors du chargement des images:', err));
-});
-
 // let loadedImages = 0;
 // const totalImages = Object.keys(images_paths).length;
 
@@ -609,6 +605,10 @@ const rematch = document.getElementById('restart');
 
 rematch.addEventListener('click', (event) => {
     window.location.reload();
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    preloadImages().catch(err => console.error('Erreur lors du chargement des images:', err));
 });
 
 function init_game() {

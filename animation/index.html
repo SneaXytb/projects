@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>1vs1 2 joueurs</title>
+    
     <style>
         @import url('https://fonts.cdnfonts.com/css/digitaldisco');
         
@@ -226,6 +227,10 @@
             align-items: center;
             justify-content: center;
         }
+
+        .credits {
+            font-size: 0.3em;
+        }
     </style>
     <script>
         function affiche_commande() {
@@ -273,7 +278,10 @@
     <footer>
         <button class="Show_commande" onclick="affiche_commande()">Show commands</button>
         <br>
-        <a href="http://www.freepik.com">Designed by Alekksall / Freepik</a>
+        <div class="credits">
+            <a target="_blank" href="https://icons8.com/icon/19755/fight">Sparring (combat libre)</a> icône par <a target="_blank" href="https://icons8.com">Icons8</a>
+            <a href="http://www.freepik.com">Designed by Alekksall / Freepik</a>
+        </div>
     </footer>
     <script src="animation.js"></script>
 </body>

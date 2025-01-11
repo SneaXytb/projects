@@ -604,15 +604,43 @@ function get_input() {
 
 const rematch = document.getElementById('restart');
 
+var interval;
+
 rematch.addEventListener('click', (event) => {
-    window.location.reload();
+    // window.location.reload();
+    clearInterval(interval);
+    main();
 });
 
 document.addEventListener('DOMContentLoaded', () => {
     preloadImages().catch(err => console.error('Erreur lors du chargement des images:', err));
 });
 
+function set__init_values() {
+    pos_x.fighter = 0;
+    pos_x.samurai = 0;
+    pos_x.shinobi = 0;
+    pos_x.background = 0;
+    pos_x.background_2 = canvas.width;
+    vie.fighter = 100;
+    vie.samurai = 100;
+    vie.shinobi = 100;
+    miroir.fighter = false;
+    miroir.samurai = false;
+    miroir.shinobi = false;
+    action_en_cours.fighter = 'rien';
+    action_en_cours.samurai = 'rien';
+    action_en_cours.shinobi = 'rien';
+    pas_en_cours.fighter = 0;
+    pas_en_cours.samurai = 0;
+    pas_en_cours.shinobi = 0;
+    pos_y.fighter = 130;
+    pos_y.samurai = 130;
+    pos_y.shinobi = 130;
+}
+
 function init_game() {
+    set__init_values();
     set_position(j1, 0, 130);
     set_position(j2, canvas.width - taille_afficher, 130);
     set_action(j1, 'position_combat');
@@ -625,7 +653,7 @@ function main() {
     document.getElementById('canvas').style.display = 'block';
     init_game();
     get_input();
-    var interval = setInterval(() => {
+    interval = setInterval(() => {
         window.requestAnimationFrame(update_affichage);
         collision_joueurs();
     }, time);

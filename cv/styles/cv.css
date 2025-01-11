@@ -1,0 +1,273 @@
+@font-face {
+    font-family: 'Lara-Croft-Tomb-Raider';
+    src:url('../fonts/Lara-Croft-Tomb-Raider.ttf.woff') format('woff'),
+        url('../fonts/Tomb-Raider.ttf.svg#Lara-Croft-Tomb-Raider') format('svg'),
+        url('../fonts/Lara-Croft-Tomb-Raider.ttf.eot'),
+        url('../fonts/Lara-Croft-Tomb-Raider.ttf.eot?#iefix') format('embedded-opentype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Tomb-Raider';
+    src:url('../fonts/Tomb_Raider.ttf') format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'adventure_clair';
+    src: url('../fonts/adventure/Adventure.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'adventure_sombre';
+    src: url('../fonts/adventure/Adventure\ Hollow.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background: url('../images/sombre_inscriptions-grecques-antiques.jpg') no-repeat center center fixed;
+        background-size: cover;
+        background-color: #000000;
+        color: #e3ba77;
+    }
+    header {
+        background-color: #4e3b06c1;
+        color: #92bcb7;
+    }
+    .texte_cv {
+        color: #e3ba77;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    body {
+        background: url('../images/clair_inscriptions-grecques-antiques.jpg') no-repeat center center fixed;
+        background-size: cover;
+        background-color: #e3ba77;
+        color: #000000;
+    }
+    header {
+        background-color: #e3ba77c4;
+    }
+    .texte_cv {
+        background-color: #ffffff68;
+        color: #000000;
+    }
+}
+
+body {
+    font-family: 'Roboto', 'Georgia', sans-serif;
+}
+
+.nav-accessibilite {
+    ul { list-style: none; }
+    position: relative;
+    a {
+        &:focus {
+            display: block;
+            position: static;
+        }
+        position: absolute;
+        left: -100em;
+    }
+}
+
+header {
+    font-family: 'Tomb-Raider', 'Roboto', 'Georgia', sans-serif;
+    text-align: center;
+    padding: 1em;
+    /* border-radius: 1em 1em 0 0; */
+}
+
+header > p {
+    font-size: 1.5em;
+    margin: 0.2em;
+}
+
+.texte_cv {
+    font-size: 4em;
+    padding: 0 1.5em 0 1.5em;
+}
+
+h1 {
+    font-size: 15em;
+    margin-top: 1em;
+    margin: 0;
+}
+
+.phrase_accroche {
+    font-style: italic;
+    font-size: 4em;
+    margin: 0;
+    margin-bottom: 0.5em;
+}
+
+h2 {
+    font-family: 'adventure_clair', 'Roboto', 'Georgia', sans-serif;
+    color: #38f50e;
+    font-size: 6em;
+}
+
+.photo_cv {
+    border-radius: 50%;
+    width: 600px;
+    height: auto;
+}
+
+#armes {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+footer {
+    background-color: #693109c4;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 1em 0;
+    img {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media screen and (max-width: 1366px) {
+    .photo_cv {
+        width: 500px;
+    }
+
+    h1 {
+        font-size: 5.5em;
+    }
+
+    h2 {
+        font-size: 4em;
+    }
+
+    .texte_cv {
+        font-size: 2em;
+    }
+
+    header > p {
+        font-size: 1.5em;
+    }
+
+    .phrase_accroche {
+        font-size: 3em;
+    }
+
+    footer {
+        img {
+        width: 45px;
+        height: 45px;
+        }
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .photo_cv {
+        width: 400px;
+    }
+
+    h1 {
+        font-size: 5em;
+    }
+
+    h2 {
+        font-size: 3.5em;
+    }
+
+    .texte_cv {
+        font-size: 1.8em;
+    }
+
+    header > p {
+        font-size: 1.4em;
+    }
+
+    .phrase_accroche {
+        font-size: 2.5em;
+    }
+
+    footer {
+        img {
+        width: 40px;
+        height: 40px;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .photo_cv {
+        width: 300px;
+    }
+
+    h1 {
+        font-size: 5em;
+    }
+
+    h2 {
+        font-size: 3em;
+    }
+
+    .texte_cv {
+        font-size: 1.7em;
+    }
+
+    header > p {
+        font-size: 1.3em;
+    }
+
+    .phrase_accroche {
+        font-size: 2.5em;
+    }
+
+    footer {
+        img {
+        width: 35px;
+        height: 35px;
+        }
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .photo_cv {
+        width: 200px;
+    }
+
+    h1 {
+        font-size: 3.5em;
+    }
+
+    h2 {
+        font-size: 2.3em;
+    }
+
+    .texte_cv {
+        font-size: 1.5em;
+    }
+
+    header > p {
+        font-size: 1em;
+    }
+
+    .phrase_accroche {
+        font-size: 1.8em;
+    }
+
+    footer {
+        img {
+        width: 30px;
+        height: 30px;
+        }
+    }
+}

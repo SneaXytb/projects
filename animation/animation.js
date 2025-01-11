@@ -23,7 +23,7 @@ fighter.src = images_paths.fighter;
 fighter.onload = () => {
     loadedImages++;
     if (loadedImages === totalImages) {
-      main(); // Commencez l'animation quand tout est chargé
+        main(); // Commencez l'animation quand tout est chargé
     }
 };
 const samurai = new Image();
@@ -31,7 +31,7 @@ samurai.src = images_paths.samurai;
 samurai.onload = () => {
     loadedImages++;
     if (loadedImages === totalImages) {
-      main(); // Commencez l'animation quand tout est chargé
+        main(); // Commencez l'animation quand tout est chargé
     }
 };
 const shinobi = new Image();
@@ -39,7 +39,7 @@ shinobi.src = images_paths.shinobi;
 shinobi.onload = () => {
     loadedImages++;
     if (loadedImages === totalImages) {
-      main(); // Commencez l'animation quand tout est chargé
+        main(); // Commencez l'animation quand tout est chargé
     }
 };
 const background = new Image();
@@ -47,7 +47,7 @@ background.src = images_paths.background;
 background.onload = () => {
     loadedImages++;
     if (loadedImages === totalImages) {
-      main(); // Commencez l'animation quand tout est chargé
+        main(); // Commencez l'animation quand tout est chargé
     }
 };
 const background_2 = new Image();
@@ -55,7 +55,7 @@ background_2.src = images_paths.background_2;
 background_2.onload = () => {
     loadedImages++;
     if (loadedImages === totalImages) {
-      main(); // Commencez l'animation quand tout est chargé
+        main(); // Commencez l'animation quand tout est chargé
     }
 };
 
@@ -591,8 +591,8 @@ function init_game() {
 function main() {
     document.getElementById('loading-screen').style.display = 'none';
     document.getElementById('canvas').style.display = 'block';
-    get_input();
     init_game();
+    get_input();
     var interval = setInterval(() => {
         window.requestAnimationFrame(update_affichage);
         collision_joueurs();
